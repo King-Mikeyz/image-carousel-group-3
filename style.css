@@ -92,45 +92,32 @@ header {
     opacity: 0.9;
 }
 
-/* NAV BUTTONS */
+/* NAV BUTTONS (BOTTOM RIGHT, MINIMAL ARROWS) */
 .nav-buttons {
     position: absolute;
     bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    right: 20px;
     display: flex;
-    gap: 15px;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    z-index: 5;
-}
-
-/* Desktop hover */
-.slideshow-container:hover .nav-buttons {
-    opacity: 1;
-}
-
-/* MOBILE TOGGLE CLASS */
-.show-buttons {
-    opacity: 1 !important;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 10;
 }
 
 /* BUTTON STYLE */
 .nav-buttons button {
-    background: rgba(255, 255, 255, 0.25);
+    background: transparent;
     border: none;
     color: white;
-    font-size: 2rem;
-    padding: 10px 15px;
+    font-size: 1.6rem;
     cursor: pointer;
-    border-radius: 50%;
-    backdrop-filter: blur(5px);
-    transition: background 0.3s ease, transform 0.2s ease;
+    padding: 4px;
+    transition: opacity 0.3s ease, transform 0.2s ease;
 }
 
+/* HOVER EFFECT */
 .nav-buttons button:hover {
-    background: rgba(255, 255, 255, 0.5);
-    transform: scale(1.1);
+    opacity: 0.6;
+    transform: translateY(-2px);
 }
 
 /* RESPONSIVE */
@@ -159,12 +146,11 @@ header {
     }
 
     .nav-buttons {
-        opacity: 0;   /* hidden by default on mobile */
         bottom: 15px;
+        right: 15px;
     }
 
     .nav-buttons button {
-        font-size: 1.2rem;
-        padding: 8px 12px;
+        font-size: 1.3rem;
     }
 }
