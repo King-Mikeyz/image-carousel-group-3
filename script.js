@@ -1,43 +1,61 @@
-// Select all slides and buttons
+// Select elements
 const slides = document.querySelectorAll(".slide");
 const nextBtn = document.querySelector(".next");
 const prevBtn = document.querySelector(".prev");
+const slideshowContainer = document.querySelector(".slideshow-container");
+const navButtons = document.querySelector(".nav-buttons");
 
-let currentSlide = 0;          // Tracks the current active slide
+let currentSlide = 0;
 const totalSlides = slides.length;
+let autoplayInterval;
 
-// Function to show slide at given index
+// Show slide
 function showSlide(index) {
     slides.forEach((slide, i) => {
         slide.classList.toggle("active", i === index);
     });
 }
 
-// Move to next slide
+// Next
 function nextSlide() {
-    currentSlide = (currentSlide + 1) % totalSlides; // loops to first slide
+    currentSlide = (currentSlide + 1) % totalSlides;
     showSlide(currentSlide);
 }
 
-// Move to previous slide
+// Previous
 function prevSlide() {
-    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides; // loops to last slide
+    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
     showSlide(currentSlide);
 }
 
-// Event listeners for buttons
+// Button events
 nextBtn.addEventListener("click", nextSlide);
 prevBtn.addEventListener("click", prevSlide);
 
-// Optional: autoplay every 5 seconds
-let autoplayInterval = setInterval(nextSlide, 5000);
-
-// Pause autoplay on hover
-const slideshowContainer = document.querySelector(".slideshow-container");
-slideshowContainer.addEventListener("mouseenter", () => clearInterval(autoplayInterval));
-slideshowContainer.addEventListener("mouseleave", () => {
+// AUTOPLAY FUNCTION (clean)
+function startAutoplay() {
     autoplayInterval = setInterval(nextSlide, 5000);
-});
+}
 
-// Initialize first slide
+function stopAutoplay() {
+    clearInterval(autoplayInterval);
+}
+
+// Start autoplay
+startAutoplay();
+
+// Desktop hover pause only
+if (window.matchMedia("(min-width: 769px)").matches) {
+    slideshowContainer.addEventListener("mouseenter", stopAutoplay);
+    slideshowContainer.addEventListener("mouseleave", startAutoplay);
+}
+
+// Mobile toggle buttons
+if (window.matchMedia("(max-width: 768px)").matches) {
+    slideshowContainer.addEventListener("click", () => {
+        navButtons.classList.toggle("show-buttons");
+    });
+}
+
+// Init
 showSlide(currentSlide);

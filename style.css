@@ -12,7 +12,7 @@ body {
     color: white;
 }
 
-/* HEADER (FIXED SCROLL ISSUE) */
+/* HEADER */
 header {
     position: relative;
     padding: 20px 0;
@@ -24,13 +24,12 @@ header {
     letter-spacing: 2px;
 }
 
-/* SLIDESHOW SECTION */
+/* SLIDESHOW */
 .slideshow {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-
     background: #111;
 }
 
@@ -93,11 +92,10 @@ header {
     opacity: 0.9;
 }
 
-/* BUTTON CONTAINER (Below slide, bottom center) */
-/* BUTTON CONTAINER (INSIDE IMAGE, CLEAN) */
+/* NAV BUTTONS */
 .nav-buttons {
     position: absolute;
-    bottom: 20px;   /* inside the image */
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -107,9 +105,14 @@ header {
     z-index: 5;
 }
 
-/* Show buttons on hover of slideshow container */
+/* Desktop hover */
 .slideshow-container:hover .nav-buttons {
     opacity: 1;
+}
+
+/* MOBILE TOGGLE CLASS */
+.show-buttons {
+    opacity: 1 !important;
 }
 
 /* BUTTON STYLE */
@@ -125,7 +128,6 @@ header {
     transition: background 0.3s ease, transform 0.2s ease;
 }
 
-/* HOVER EFFECT */
 .nav-buttons button:hover {
     background: rgba(255, 255, 255, 0.5);
     transform: scale(1.1);
@@ -157,8 +159,8 @@ header {
     }
 
     .nav-buttons {
-        opacity: 1;      /* always visible on phone */
-        bottom: 15px;    /* KEEP INSIDE IMAGE */
+        opacity: 0;   /* hidden by default on mobile */
+        bottom: 15px;
     }
 
     .nav-buttons button {
