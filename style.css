@@ -29,7 +29,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
 
     background: #111;
 }
@@ -40,6 +40,8 @@ header {
     width: 70%;
     max-width: 900px;
     height: 500px;
+    overflow: hidden;
+    border-radius: 10px;
 }
 
 /* SLIDE */
@@ -92,14 +94,15 @@ header {
 }
 
 /* BUTTON CONTAINER (Below slide, bottom center) */
+/* BUTTON CONTAINER (INSIDE IMAGE, CLEAN) */
 .nav-buttons {
     position: absolute;
-    bottom: 15px;        /* slightly below the slide */
+    bottom: 20px;   /* inside the image */
     left: 50%;
-    transform: translateX(-50%);  /* center horizontally */
+    transform: translateX(-50%);
     display: flex;
     gap: 15px;
-    opacity: 0;          /* hidden by default */
+    opacity: 0;
     transition: opacity 0.4s ease;
     z-index: 5;
 }
@@ -132,8 +135,8 @@ header {
 @media (max-width: 768px) {
 
     .slideshow-container {
-        width: 90%;
-        height: 400px;
+        width: 95%;
+        height: 300px;
     }
 
     .project-title {
@@ -146,15 +149,16 @@ header {
     }
 
     .slide-content h2 {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
 
     .slide-content p {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
     }
 
     .nav-buttons {
-        bottom: -55px;
+        opacity: 1;      /* always visible on phone */
+        bottom: 15px;    /* KEEP INSIDE IMAGE */
     }
 
     .nav-buttons button {
